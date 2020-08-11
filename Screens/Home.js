@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react';
-import { StyleSheet, Text, View, FlatList } from 'react-native';
+import { View, FlatList } from 'react-native';
+import styled from "styled-components/native";
 import {StatusBar} from "expo-status-bar";
+import ListingItem from "../Components/ListingItem";
 
 const Home = ({ navigation }) => {
 
@@ -27,19 +29,27 @@ const Home = ({ navigation }) => {
   }, [])
 
   return (
-    <View style={styles.container}>
-      {!loading && !error && <FlatList data={data} renderItem={({item}) => <Text>{item.title}</Text>} />}
+    <ListingsWrapper>
+      {!loading && !error &&
+      <Listings
+          keyExtractor={item => String(item.id)}
+          data={data}
+          renderItem={({item}) => <ListingItem item={item} navigation={navigation}/>}
+      />}
       <StatusBar style="auto" />
-    </View>
+    </ListingsWrapper>
 )};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const ListingsWrapper =styled(View)`
+  flex: 1;
+  background-color: #fff;
+  align-items: center;
+  justify-content: center;
+`;
+
+const Listings = styled(FlatList)`
+  width: 100%;
+  padding: 5%;
+`
 
 export default Home;

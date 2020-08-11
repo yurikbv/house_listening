@@ -1,12 +1,15 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
-const Detail = ( {navigation} ) => (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your</Text>
-      <Button onPress={() => navigation.goBack()} title="Go to back to Home" />
-    </View>
-);
+const Detail = ( {route} ) => {
+
+  const {item} = route.params;
+  console.log(item);
+
+  return (
+      <View style={styles.container}>
+        <Text>{item.title}</Text>
+      </View>)};
 
 const styles = StyleSheet.create({
   container: {
