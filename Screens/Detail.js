@@ -4,7 +4,6 @@ import { StyleSheet, Text, View } from 'react-native';
 const Detail = ( {route} ) => {
 
   const {item} = route.params;
-  console.log(item);
 
   return (
       <View style={styles.container}>
