@@ -1,22 +1,15 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { View, Text } from 'react-native';
+import ListingDetail from '../Components/ListingDetail';
 
 const Detail = ( {route} ) => {
 
   const {item} = route.params;
 
   return (
-      <View style={styles.container}>
-        <Text>{item.title}</Text>
+      <View>
+        <ListingDetail item={item}/>
       </View>)};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
 
 export default Detail;
